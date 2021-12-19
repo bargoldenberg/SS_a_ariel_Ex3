@@ -32,6 +32,6 @@ int main()
     strcpy(ANAGRAMSENTENCE,SENTENCE);
     printf("Gematria Sequences: %s\n",GematriaSequences(WORDARR,SENTENCE,SEQUENCE));
     printf("Atbash Sequences: %s\n",AtbashSquence(ATBASHSENTENCE,ATBASH,ATBASHSEQUENCE));
-    printf("Anagram Sequences: %s\n",permutations(WORDARR,ANAGRAMSENTENCE,ANAGRAMSEQUENCE));
+    printf("Anagram Sequences: %s",permutations(WORDARR,ANAGRAMSENTENCE,ANAGRAMSEQUENCE));
     return 0;
 }
