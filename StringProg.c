@@ -26,7 +26,7 @@ char* GematriaSequences(char WORDARR[],char SENTENCE[],char* SEQUENCE){
     int currINDEX=0;
     int sqINDEX=0;
     char CURRSQ[TXT]={0};
-    for(int i =0;i<strlen(SENTENCE)-1;i++){
+    for(int i =0;i<strlen(SENTENCE);i++){
         char strcheck[] ={SENTENCE[i],'\0'};
         if(GematriaValue(strcheck)==0){
             continue;
@@ -40,7 +40,7 @@ char* GematriaSequences(char WORDARR[],char SENTENCE[],char* SEQUENCE){
                 char CheckSize [TXT] ={0};
                 strcpy(CheckSize,CURRSQ);
                 CheckSize[currINDEX]='\0';
-                if(strlen(CheckSize)!=1){ 
+                if(!(GematriaValue(CURRSQ)==Value)){ 
                     CURRSQ[currINDEX++]=SENTENCE[j];
                 }
                 CURRSQ[currINDEX++]=tilda;
@@ -218,8 +218,15 @@ char* permutations(char WORDARR[],char SENTENCE[],char* SEQUENCE){
                 char CURRSQcheck[strlen(CURRSQ)];
                 strcpy(CURRSQcheck,CURRSQ);
                 sort(CURRSQcheck);
-
-                if(strcmp(CURRSQcheck,SORTEDWORD)==0){
+                char CURRSQNOSYM[strlen(WORDARR)];
+                int indx=0;
+                for(int i =0;i<strlen(CURRSQ);i++){
+                    if(CURRSQcheck[i]!=' '){
+                        CURRSQNOSYM[indx++]=CURRSQcheck[i];
+                    }
+                }
+                CURRSQNOSYM[indx]='\0';
+                if(strcmp(CURRSQNOSYM,SORTEDWORD)==0){
                     CURRSQ[currINDEX++]=tilda;
                     for(int k=0;k<currINDEX;k++){
                         *(SEQUENCE+sqINDEX++)=CURRSQ[k];
